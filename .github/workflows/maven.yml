@@ -25,6 +25,18 @@ jobs:
 
     - name: Run tests 
       run: mvn test
+      
+    - name: Build with Maven and Save Test Results
+      run: |
+        mvn clean test
+        mkdir -p test-results
+        mv target/surefire-reports/*.xml test-results/
+      # Upload test results as an artifact
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+          name: test-results
+          path: test-results/
 
         
 
