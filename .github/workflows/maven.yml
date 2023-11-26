@@ -26,16 +26,6 @@ jobs:
     - name: Run tests 
       run: mvn test
       
-    - name: Build with Maven and Save Test Results
-      run: |
-        mvn clean test
-        mkdir -p test-results
-        mv target/surefire-reports/*.xml test-results/
-        git config --local user.email "vivek@igsindia.net"
-        git config --local user.name "vivek28058"
-        git add test-results
-        git commit -m "Add test results" || true
-        git push
-
-        
-
+    - name: Publish Test Report
+      if: success() || failure()
+      uses: scacap/action-surefire-report@v1
