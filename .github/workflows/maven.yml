@@ -23,14 +23,8 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-    - name: Run tests --logger "xml;LogFileName=testresults.xml"
+    - name: Run tests 
       run: mvn test
-      
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always() # or you can set conditions based on your needs
-      with:
-        files: |
-         /home/runner/work/junit5-migration-maven/junit5-migration-maven/src/test/Test reports
+
         
 
