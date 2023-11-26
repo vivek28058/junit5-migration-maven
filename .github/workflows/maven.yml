@@ -23,7 +23,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-    - name: Run tests --logger
+    - name: Run tests --logger "xml;LogFileName=testresults.xml"
       run: mvn test
       
     - name: Publish Test Results
@@ -31,6 +31,6 @@ jobs:
       if: always() # or you can set conditions based on your needs
       with:
         files: |
-          path/to/your/test-results/**/*.xml
-        logger: console # or specify the logger you want to use
+          src/test/java/com/example/project/testresults.xml
+        
 
