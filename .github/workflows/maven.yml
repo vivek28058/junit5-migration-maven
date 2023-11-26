@@ -31,6 +31,6 @@ jobs:
       if: always() # or you can set conditions based on your needs
       with:
         files: |
-          src/test/java/com/example/project/testresults.xml
+          /home/runner/work/junit5-migration-maven/junit5-migration-maven
         
 
